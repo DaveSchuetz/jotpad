@@ -44,13 +44,19 @@ class Notes extends Component{
             title: ''
         })
     }
+    removeItem(noteId){
+        let noteRef = fire.database().ref(`/notes/${noteId}`)
+        noteRef.remove()
+    }
     render(){
         return(
             <div className='side-bar'>
                 <div>
                     {this.state.note.map((note, i) =>
                     <div className="note" key={i}>
-                        <Link to={{pathname: '/notes/' + note.id, state: {id: note.id}}}><p>{note.title}</p></Link>
+                        {/* <Link to={'/notes/' + note.id} params={{id: note.id}}><p>{note.title}</p></Link> */}
+                        <a href={'/notes/' + note.id}><p>{note.title}</p></a>
+                        <button onClick={() => this.removeItem(note.id)}>Delete</button>
                     </div>
                     )}
                 </div>
