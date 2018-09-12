@@ -1,0 +1,7 @@
+The notepad app will be an application that will allow you to take your application across devices. Hopefully set it up so that the user can log in with OAUTH. Alsoo would like to be able to allow someone to view and/or edit your notes, for project purposes.
+
+When a user loads the page, they will be required to login or signup. They will sign-in with e-mail, possibly OAUTH will be used as well.
+
+After they are signed in, they will see a list of their notes on the left of the page. If on mobile, the notes will be in a drop-down form instead. The note information will load in the middle of the page on the web or mobile.
+
+Once a note is created, the user will be able to add others to be able to read or edit. Users will be able to edit and delete the notes.
