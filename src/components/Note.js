@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import fire from './fire'
+import fire from '../firebase/fire'
+import { Redirect } from 'react-router-dom';
 
 class Note extends Component{
     constructor(props){
@@ -14,16 +15,6 @@ class Note extends Component{
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
-    // componentDidMount(){
-    //     this.noteRef.on('value', snapshot => {
-    //         this.setState({
-    //             note: snapshot.val()
-    //         })
-    //     })
-    // }
-    // componentWillUnmount(){
-    //     this.noteRef.off
-    // }
     componentDidMount(){        
         let {id} = this.props.match.params
         console.log(id)
@@ -50,6 +41,9 @@ class Note extends Component{
         this.setState(state)
     }
     render(){
+        if (this.state.note === null){
+            return <Redirect to='/' />
+        }
         return(
             <div>
                 <h3>{this.state.note.title}</h3>

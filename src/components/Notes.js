@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import fire from './fire';
-import { Link } from 'react-router-dom';
+import fire from '../firebase/fire';
+
 
 class Notes extends Component{
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state = {
             title: '',
             note: []
@@ -49,6 +49,7 @@ class Notes extends Component{
         noteRef.remove()
     }
     render(){
+        
         return(
             <div className='side-bar'>
                 <div>
