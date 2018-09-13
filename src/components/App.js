@@ -8,24 +8,25 @@ import SignUpPage from './SignUp';
 import SignInPage from './SignIn';
 import PasswordForgetPage from './PasswordForget';
 import AccountPage from './Account';
-// import { fire } from '../firebase';
+import { fire } from '../firebase';
 
 import withAuthentication from './withAuthentication';
-class App extends Component {
-  // constructor(props) {
-  //   super(props);
 
-  //   this.state = {
-  //     authUser: null,
-  //   };
-  // }
-  // componentDidMount() {
-  //   fire.auth.onAuthStateChanged(authUser => {
-  //     authUser
-  //       ? this.setState({ authUser })
-  //       : this.setState({ authUser: null });
-  //   });
-  // }
+class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      authUser: null,
+    };
+  }
+  componentDidMount() {
+    fire.auth.onAuthStateChanged(authUser => {
+      authUser
+        ? this.setState({ authUser: authUser.uid })
+        : this.setState({ authUser: null });
+    });
+  }
   render() {
     return (
       <div className="App">
@@ -34,7 +35,7 @@ class App extends Component {
           <Navigation />
           {/* <Navigation authUser={this.state.authUser} /> */}
         </header>
-        <Notes />
+        <Notes authUser={this.state.authUser} />
         <main>
           <Switch>
             <Route exact path='/notes/:id' component={Note} />

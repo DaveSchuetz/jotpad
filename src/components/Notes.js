@@ -2,18 +2,22 @@ import React, { Component } from 'react';
 import fire from '../firebase/fire';
 
 
+
 class Notes extends Component{
+    
     constructor(props){
         super(props)
         this.state = {
             title: '',
-            note: []
+            note: [],
+            authUser: props.authUser
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-    componentDidMount(){
-        let noteRef = fire.database().ref('notes');
+    componentWillReceiveProps(nextProps){
+        this.setState(nextProps)
+        let noteRef = fire.database().ref('notes').orderByChild('owner').equalTo(this.state.authUser);
         noteRef.on('value', snapshot => {
             let notes = snapshot.val();
             let newNote = [];
@@ -37,7 +41,8 @@ class Notes extends Component{
         e.preventDefault();
         let noteRef = fire.database().ref('notes');
         const note = {
-        title: this.state.title
+        title: this.state.title,
+        owner: this.state.authUser
         }
         noteRef.push(note);
         this.setState({
@@ -49,7 +54,6 @@ class Notes extends Component{
         noteRef.remove()
     }
     render(){
-        
         return(
             <div className='side-bar'>
                 <div>
@@ -62,12 +66,15 @@ class Notes extends Component{
                     )}
                 </div>
                 <div>
+                    {this.state.authUser ? (
                     <section className="add-item">
                         <form onSubmit={this.handleSubmit}>
                             <input type="text" name="title" placeholder="New Note" onChange={this.handleChange} value={this.state.title} />
                             <button>Add</button>
                         </form>
                     </section>
+                    ) : <div></div>
+                    }
                 </div>
             </div>
         )

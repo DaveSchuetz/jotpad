@@ -8,10 +8,6 @@ class Note extends Component{
         this.state = {
             note: []
         }
-        // let {id} = this.props.match.params
-        // console.log(id)
-        // this.noteRef = fire.database().ref().child(`/notes/${id}`)
-        
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
@@ -47,7 +43,6 @@ class Note extends Component{
         return(
             <div>
                 <h3>{this.state.note.title}</h3>
-                {/* <p>{this.state.note.info}</p> */}
                 <form onSubmit={this.handleSubmit}>
                     <textarea rows="40" cols="80" onChange={this.handleChange} value={this.state.note.info} />
                     <button>Save</button>
