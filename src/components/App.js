@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route, Link, Switch, Redirect } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import Note from './Note'
 import Notes from './Notes'
 import * as routes from '../constants/routes'
