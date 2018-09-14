@@ -10,10 +10,12 @@ class Notes extends Component{
         this.state = {
             title: '',
             note: [],
-            authUser: props.authUser
+            authUser: props.authUser,
+            collapsed: true
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.toggleNavbar = this.toggleNavbar.bind(this);
     }
     componentWillReceiveProps(nextProps){
         this.setState(nextProps)
@@ -53,30 +55,42 @@ class Notes extends Component{
         let noteRef = fire.database().ref(`/notes/${noteId}`)
         noteRef.remove()
     }
+    toggleNavbar() {
+        this.setState({
+        collapsed: !this.state.collapsed,
+        });
+        }
     render(){
+        const collapsed = this.state.collapsed;
+        const classOne = collapsed ? 'collapse navbar-collapse' : 'collapse navbar-collapse show';
+        const classTwo = collapsed ? 'navbar-toggler navbar-toggler-right collapsed' : 'navbar-toggler navbar-toggler-right';
         return(
-            <div className='side-bar'>
-                <div>
+            <nav className="navbar navbar-light bg-light navbar-expand-lg">
+                <button onClick={this.toggleNavbar} className={`${classTwo}`} data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+                <div className={`${classOne}`} id="navbarCollapse">
+                    <div>
                     {this.state.note.map((note, i) =>
-                    <div className="note" key={i}>
+                    <div className="navbar-item" key={i}>
                         {/* <Link to={'/notes/' + note.id} params={{id: note.id}}><p>{note.title}</p></Link> */}
-                        <a href={'/notes/' + note.id}><p>{note.title}</p></a>
-                        <button onClick={() => this.removeItem(note.id)}>Delete</button>
+                        <a href={'/notes/' + note.id} className="nav-link jot-it">{note.title}</a>
+                        <button className="jot-del" onClick={() => this.removeItem(note.id)}>X</button>
                     </div>
                     )}
-                </div>
-                <div>
+                    
                     {this.state.authUser ? (
-                    <section className="add-item">
+                   
                         <form onSubmit={this.handleSubmit}>
                             <input type="text" name="title" placeholder="New Note" onChange={this.handleChange} value={this.state.title} />
                             <button>Add</button>
                         </form>
-                    </section>
+                
                     ) : <div></div>
                     }
+                    </div>
                 </div>
-            </div>
+            </nav>
         )
     }
 }

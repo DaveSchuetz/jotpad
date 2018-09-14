@@ -41,10 +41,10 @@ class Note extends Component{
             return <Redirect to='/' />
         }
         return(
-            <div>
-                <h3>{this.state.note.title}</h3>
-                <form onSubmit={this.handleSubmit}>
-                    <textarea rows="40" cols="80" onChange={this.handleChange} value={this.state.note.info} />
+            <div className="jotpad">
+                <h3 className="jot">{this.state.note.title}</h3>
+                <form className="pad" onSubmit={this.handleSubmit}>
+                    <textarea onChange={this.handleChange} value={this.state.note.info} />
                     <button>Save</button>
                 </form>
             </div>

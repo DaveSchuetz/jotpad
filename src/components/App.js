@@ -29,14 +29,15 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
+      <div className="container">
         <header>
-          <h1>Jotpad</h1>
+          <h1 className="title">Jotpad</h1>
           <Navigation />
           {/* <Navigation authUser={this.state.authUser} /> */}
         </header>
-        <Notes authUser={this.state.authUser} />
+        
         <main>
+        <Notes authUser={this.state.authUser} />
           <Switch>
             <Route exact path='/notes/:id' component={Note} />
             <Route exact path={routes.SIGN_UP} component={SignUpPage} />
