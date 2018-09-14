@@ -6,7 +6,7 @@ import * as routes from '../constants/routes';
 
 const PasswordForgetPage = () =>
   <div>
-    <h1>PasswordForget</h1>
+    <h3 className="acct">PasswordForget</h3>
     <PasswordForgetForm />
   </div>
 
@@ -50,8 +50,8 @@ class PasswordForgetForm extends Component {
 
     return (
       <form onSubmit={this.onSubmit}>
-        <input value={this.state.email} onChange={event => this.setState(byPropKey('email', event.target.value))} type="text" placeholder="Email Address" />
-        <button disabled={isInvalid} type="submit">Reset My Password</button>
+        <input className="pwd-chg" value={this.state.email} onChange={event => this.setState(byPropKey('email', event.target.value))} type="text" placeholder="Email Address" />
+        <button className="pwd-chg" disabled={isInvalid} type="submit">Reset My Password</button>
 
         { error && <p>{error.message}</p> }
       </form>

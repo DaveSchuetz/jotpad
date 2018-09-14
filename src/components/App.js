@@ -33,7 +33,6 @@ class App extends Component {
         <header>
           <h1 className="title">Jotpad</h1>
           <Navigation />
-          {/* <Navigation authUser={this.state.authUser} /> */}
         </header>
         
         <main>
@@ -52,4 +51,3 @@ class App extends Component {
 }
 
 export default withAuthentication(App);
-// export default App

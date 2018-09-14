@@ -65,7 +65,7 @@ class Notes extends Component{
         const classOne = collapsed ? 'collapse navbar-collapse' : 'collapse navbar-collapse show';
         const classTwo = collapsed ? 'navbar-toggler navbar-toggler-right collapsed' : 'navbar-toggler navbar-toggler-right';
         return(
-            <nav className="navbar navbar-light bg-light navbar-expand-lg">
+            <nav className="navbar navbar-light navbar-expand-lg">
                 <button onClick={this.toggleNavbar} className={`${classTwo}`} data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
@@ -74,16 +74,16 @@ class Notes extends Component{
                     {this.state.note.map((note, i) =>
                     <div className="navbar-item" key={i}>
                         {/* <Link to={'/notes/' + note.id} params={{id: note.id}}><p>{note.title}</p></Link> */}
-                        <a href={'/notes/' + note.id} className="nav-link jot-it">{note.title}</a>
+                        <a href={'/notes/' + note.id} className="nav-link">{note.title}</a>
                         <button className="jot-del" onClick={() => this.removeItem(note.id)}>X</button>
                     </div>
                     )}
                     
                     {this.state.authUser ? (
                    
-                        <form onSubmit={this.handleSubmit}>
-                            <input type="text" name="title" placeholder="New Note" onChange={this.handleChange} value={this.state.title} />
-                            <button>Add</button>
+                        <form className="new-jot" onSubmit={this.handleSubmit}>
+                            <input type="text" name="title" placeholder="New Jot" onChange={this.handleChange} value={this.state.title} />
+                            <button className="jot-add">+</button>
                         </form>
                 
                     ) : <div></div>

@@ -6,9 +6,9 @@ import * as routes from '../constants/routes';
 
 const SignInPage = ({ history }) =>
   <div>
-    <h1>SignIn</h1>
+    <h3 className="acct">SignIn</h3>
     <SignInForm history={history} />
-    <PasswordForgetLink />
+    <p className="click"><PasswordForgetLink /></p>
   </div>
 
 const byPropKey = (propertyName, value) => () => ({
@@ -63,9 +63,9 @@ class SignInForm extends Component {
       
     return (
       <form onSubmit={this.onSubmit}>
-        <input value={email} onChange={event => this.setState(byPropKey('email', event.target.value))} type="text" placeholder="Email Address" />
-        <input value={password} onChange={event => this.setState(byPropKey('password', event.target.value))} type="password" placeholder="Password" />
-        <button disabled={isInvalid} type="submit">Sign In</button>
+        <input className="sign-in" value={email} onChange={event => this.setState(byPropKey('email', event.target.value))} type="text" placeholder="Email Address" />
+        <input className="sign-in" value={password} onChange={event => this.setState(byPropKey('password', event.target.value))} type="password" placeholder="Password" />
+        <button className="sign-in" disabled={isInvalid} type="submit">Sign In</button>
         { error && <p>{error.message}</p> }
       </form>
     );
