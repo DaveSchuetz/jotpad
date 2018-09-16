@@ -1,17 +1,20 @@
 main {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Shadows Into Light', cursive;
   height: 650px;
+  font-size: 25px;
   background: rgb(160, 160, 160);
 }
 header{
   background-color: aquamarine;
+  font-family: 'Merienda', cursive;
   height: 90px;
   position: sticky;
 }
 .title{
   text-align: center;
+  font-size: 50px;;
 }
 .head-nav{
   display: flex;
@@ -26,6 +29,7 @@ header{
 .jot{
   color: white;
   text-align: center;
+  font-family: 'Merienda', cursive;
 }
 textarea{
   width: 100%;
@@ -60,11 +64,15 @@ textarea{
   display: block;
   margin: 5px;
   margin-left: 100px;
+  font-family: sans-serif;
+  font-size: 16px;
 }
 .jot-del{
   border-radius: 50%;
   height: 32px;
   width: 32px;
+  font-family: sans-serif;
+  font-size: 16px;
   font-weight: 700;
   text-align: center;
   box-shadow: none;
@@ -82,7 +90,13 @@ textarea{
 
 .new-jot{
   width: 150px;
+  font-family: sans-serif;
+  font-size: 16px;
   margin-top: 15px;
+}
+.save-btn{
+  font-family: sans-serif;
+  font-size: 16px;
 }
 .new-jot input{
   width: 110px;
@@ -98,20 +112,27 @@ textarea{
 }
 .acct{
   padding: 10px;
+  font-family: 'Merienda', cursive;
 }
 .pwd-chg{
   margin: 5px;
   margin-left: 100px;
   display: block;
+  font-family: sans-serif;
+  font-size: 16px;
 }
 .sign-in
 {
   margin: 5px;
   margin-left: 100px;
   display: block;
+  font-family: sans-serif;
+  font-size: 16px;
 }
 .click{
   margin-left:100px;
+  font-family: sans-serif;
+  font-size: 16px;
 }
 .navbar-collapse{
   align-items: initial;
@@ -123,13 +144,9 @@ textarea{
     display: inline-block;
   }
   .sign-up{
-    display: inline;
-    margin-left:0;
+    display: block;
   }
-  .click{
-    margin-left:0;
-  }
-  .collapse .navbar-collapse .show{
+  .collapse .navbar-collapse{
     align-items: flex-start;
   }
   #navbarCollapse{
