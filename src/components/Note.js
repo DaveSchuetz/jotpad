@@ -45,7 +45,7 @@ class Note extends Component{
                 <h3 className="jot">{this.state.note.title}</h3>
                 <form className="pad" onSubmit={this.handleSubmit}>
                     <textarea onChange={this.handleChange} value={this.state.note.info} />
-                    <button>Save</button>
+                    <button className="save-btn">Save</button>
                 </form>
             </div>
         )
