@@ -8,7 +8,7 @@ const SignInPage = ({ history }) =>
   <div>
     <h3 className="acct">SignIn</h3>
     <SignInForm history={history} />
-    <p className="click"><PasswordForgetLink /></p>
+    <div className="click"><PasswordForgetLink /></div>
   </div>
 
 const byPropKey = (propertyName, value) => () => ({
