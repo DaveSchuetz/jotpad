@@ -74,7 +74,7 @@ class Notes extends Component{
                     {this.state.note.map((note, i) =>
                     <div className="navbar-item" key={i}>
                         {/* <Link to={'/notes/' + note.id} params={{id: note.id}}><p>{note.title}</p></Link> */}
-                        <a href={'/notes/' + note.id} className="navlink">{note.title}</a>
+                        <a href={'/notes/' + note.id} className="note-link">{note.title}</a>
                         <button className="jot-del" onClick={() => this.removeItem(note.id)}>X</button>
                     </div>
                     )}
